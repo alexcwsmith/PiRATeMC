@@ -30,7 +30,7 @@ After you have made these changes, run:
 sudo netplan apply
 ```
 
-### Step 2: modify etc/dhcp/dhcpd.conf
+### Step 2: modify /etc/dhcp/dhcpd.conf
   - assuming you have assigned the remote controller the same static IP address as here (10.1.1.243), you can simply copy the dhcpd.conf file from this repo into your /etc/dhcp/ folder with:
 ```
 sudo cp dhcpd.conf /etc/dhcp/dhcpd.conf
