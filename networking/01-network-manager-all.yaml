@@ -1,4 +1,3 @@
-# Let NetworkManager manage all devices on this system
 network:
   ethernets:
     enp6s0:
