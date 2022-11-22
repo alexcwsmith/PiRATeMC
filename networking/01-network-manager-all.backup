@@ -1,0 +1,16 @@
+# Let NetworkManager manage all devices on this system
+network:
+  ethernets:
+    enp6s0:
+     dhcp4: no
+     addresses: [10.81.104.165/24]
+     gateway4: 10.81.104.1
+     nameservers:
+       addresses: [10.94.8.20,10.95.16.20]
+    enp5s0:
+     dhcp4: no
+     addresses: [10.1.1.243/24]
+     gateway4: 10.1.1.1
+     nameservers:
+       addresses: [10.1.1.243]
+  version: 2
