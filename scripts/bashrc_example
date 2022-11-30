@@ -16,6 +16,11 @@ export REMOTEPASS=$(cat ~/.pass_file) #use the makePassFile.sh script to make a 
 export REMOTELOGPATH='~/RPi_SessionLogs' #path on remote to save IP address connection logs to
 export REMOTEVIDPATH='/d1/studies/Raspicam/' #path on remote to save videos to
 
+#These variables are used only when triggering a recording with a TTL (the receiveTTL.py script):
+export vidName='ExampleVideoName'
+export vidLength=60
+export vidFPS=30
+
 #Test if connection to remote is available, and log IP address if true:
 export REMOTEIP=$(echo $REMOTE | sed -E 's/(.*)@(.*)/\2/')
 if ping -c 1 $REMOTEIP >/dev/null;then
