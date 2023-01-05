@@ -16,14 +16,28 @@ import RPi.GPIO as GPIO
 from time import sleep
 import subprocess
 import os
+from datetime import datetime as dt
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(4, GPIO.IN)
 
-
-vidName = os.environ['vidName']
-vidLength = os.environ['vidLength'
-vidFPS = os.environ['vidFPS']
+try:
+    vidName = os.environ['vidName']
+except KeyError:
+    print("No system variable 'vidName' set, defaulting to 'Unnamed video' with the date and time.")
+    now = dt.now()
+    timestamp = now.strftime('%m-%d-%y_%Hh_%Mm_%Ss')
+    vidName = 'UnnamedVideo_'+timestamp
+try:
+    vidLength = os.environ['vidLength']
+except KeyError:
+    print("No system variable 'vidLength' set, defaulting to 20 minutes")
+    vidLength=20
+try:
+    vidFPS = os.environ['vidFPS']
+except KeyError:
+    print("No system variable 'vidFPS' set, defaulting to 30")
+    vidFPS=30
 
 print("Ready to receive TTL")
 while True:
