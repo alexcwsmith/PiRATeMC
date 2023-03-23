@@ -6,6 +6,7 @@ to a fiber photometry system (or whatever third-party equipment), and will illum
 in the frame of the behavioral video recording for DLC to track behavior and data that is time-stamped by TTLs.
 See included pictures for help wiring. The breadboard/resistor for the LED is not absolutely necessary but is suggested to protect the LED from high voltage.
 """
+try:
     import RPi.GPIO as GPIO
 except ImportError:
     print("RPi.GPIO module not found. Install it with pip install RPi.GPIO")
