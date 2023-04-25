@@ -8,9 +8,9 @@ Created on Tue Apr 25 11:39:03 2023
 
 import RPi.GPIO as GPIO
 import logging
-import time
+from datetime import datetime as dt
 
-logging.basicConfig(filename=time.strftime('%m-%d-%Y'),
+logging.basicConfig(filename=dt.now().strftime('%m-%d-%Y'),
                     filemode='a',
                     format='%(asctime)s,%(msecs)d, %(name)s, %(levelname)s, %(message)s',
                     datefmt='%H:%M:%S',
