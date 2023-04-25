@@ -12,7 +12,7 @@ import time
 
 logging.basicConfig(filename=time.strftime('%m-%d-%Y'),
                     filemode='a',
-                    format='%(asctime)s:%(msecs)d, %(name)s, %(levelname)s, %(message)s',
+                    format='%(asctime)s,%(msecs)d, %(name)s, %(levelname)s, %(message)s',
                     datefmt='%H:%M:%S',
                     level=logging.DEBUG)
 
