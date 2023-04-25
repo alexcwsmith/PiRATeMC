@@ -16,7 +16,7 @@ GPIO.setmode(GPIO.BOARD) #mode GPIO.BOARD uses pin numbering in order 1-40, usin
 GPIO.setup(15, GPIO.OUT, initial=0)
 GPIO.setup(11, GPIO.OUT, initial=0)
 for i in range(20):
-    print("Step " + str(i)) #Only useful if you have Pi plugged into PiTFT touchscreen or another display.
+    print("Step " + str(i)) #Only useful if you have Pi plugged into a display.
     GPIO.output(15, 1)
     GPIO.output(11, 1)
     time.sleep(0.5) #TODO: Make time decrease based on i, so pulse duration is quantitative indicator of how long into session it occurs. May want to change the TTL pin from 11 to 32 (PWM0, GPIO.BCM mode Pin 12) and LED from Pin 15 to Pin 33 (PWM1, BCM mode pin 13) to take advantage of pulse width modulation.
@@ -25,5 +25,3 @@ for i in range(20):
     time.sleep(29.5) #TODO: Change sleep time in accordance with adjusting pulse time above.
 
 GPIO.cleanup()
-
-#TODO: See if multithreading is possible to be able to run this script and the recordVideo.sh script separately at the same time from same ssh session, rather than running from separate ssh session or separate RPi.
