@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Apr 25 11:39:03 2023
+This script uses Raspberry Pi GPIO to receive a TTL and turn on an LED for the duration of the TTL. See image at github.com/alexcwsmith/PiRATeMC/tree/master/docs/TTL_and_LED_Wiring.png
+for example of how to wire this.
 
 @author: smith
 """
@@ -16,19 +17,19 @@ logging.basicConfig(filename=dt.now().strftime('%m-%d-%Y'),
                     datefmt='%H:%M:%S',
                     level=logging.DEBUG)
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(4, GPIO.IN)
-GPIO.setup(17, GPIO.OUT)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(15, GPIO.IN) #TTL
+GPIO.setup(11, GPIO.OUT) #LED
 
 def callback_on(self):
-    GPIO.output(17, 1)
+    GPIO.output(11, 1)
     logging.info('START TTL, LED ON')
 
 def callback_off(self):
-    GPIO.output(17, 0, 'END TTL, LED OFF')
+    GPIO.output(11, 0, 'END TTL, LED OFF')
 
-GPIO.add_event_detect(4, GPIO.FALLING, bouncetime=50)
-GPIO.add_event_callback(4, callback_on)
+GPIO.add_event_detect(15, GPIO.FALLING, bouncetime=50)
+GPIO.add_event_callback(15, callback_on)
 
-GPIO.add_event_detect(4, GPIO.RISING, bouncetime=50)
-GPIO.add_event_callback(4, callback_off)
+GPIO.add_event_detect(15, GPIO.RISING, bouncetime=50)
+GPIO.add_event_callback(15, callback_off)

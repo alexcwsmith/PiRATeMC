@@ -20,8 +20,8 @@ logging.basicConfig(filename='pulseTTLandLED_'+dt.now().strftime('%m-%d-%Y'),
                     level=logging.DEBUG)
 
 GPIO.setmode(GPIO.BOARD) #mode GPIO.BOARD uses pin numbering in order 1-40, using mode GPIO.BCM uses the pin numbering here: https://pinout.xyz/
-GPIO.setup(15, GPIO.OUT, initial=0)
-GPIO.setup(11, GPIO.OUT, initial=0)
+GPIO.setup(15, GPIO.OUT, initial=0) #TTL, BCM pin 22
+GPIO.setup(11, GPIO.OUT, initial=0) #LED, BCM pin 17
 for i in range(60): #These are 30-second loops, so 60 here is every 30s during a 30 minute session. Change as needed.
     print("Step " + str(i)) #Only useful if you have Pi plugged into a display.
     GPIO.output(15, 1)

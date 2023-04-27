@@ -18,6 +18,8 @@ This works by configuring a 'remote controller' computer as a DHCP server to ass
 
 ### Installation
 ---------------
+We have included a version of rpi-imager in this repository, because newer versions of rpi-imager may not work with Ubuntu 18.04. We plan to update all of this code for Ubuntu 22 in the not-too-distant future.
+
 Flashing the provided PiCamOS is the recommended way to install on a Raspberry Pi. The setupScripts/ folder has information to reproduce this OS. The following packages on the Pi can be installed via apt:
 1. sshpass
 2. gpac
@@ -42,7 +44,22 @@ Detailed installation instructions can be found in our preprint [here](https://w
 -----------
 The main script to capture videos is at scripts/recordVideo.sh. This script assumes that several variables are set in your .bashrc file (or from exporting manually): $REMOTE, $REMOTEPASS, $REMOTEVIDPATH, as these provide the location to transfer video to when done recording. If you only want to record locally and not transfer to a network location, you can use recordVideo_local.sh
 
-In addition to the platform for synchronously controlling many cameras through a DHCP server, we also provide several scripts and wiring diagrams for integrating GPIO pins.
+In addition to the platform for synchronously controlling many cameras through a DHCP server, we also provide several scripts and wiring diagrams for integrating GPIO pins. These scripts can be run simultaneously with the recordVideo.sh script in the terminal, for example:
 
-The script receiveTTL.py allows for triggering recording with a TTL pulse onto a GPIO pin. This script depends on more system variables that are self explanatory: $vidName, $vidLength, $vidFPS. If these variables are not found, defaults will be used, and the defaults can be changed within each script. ![A picture of how to wire a Pi up to receive this signal is here](./images/receiveTTL_wiring.png).
+```
+./recordVideo.sh & pulseTTLandLED.py
+```
+
+Will run both of those scripts, in our hands there is approximately 20-30 millisecond delay between the two actions.
+
+The pulseTTLandLED.py script outputs a 0.5s TTL signal and illuminates an LED at the same time, every 30 seconds. We use this to send a TTL out to a fiber photometry system, and have the LED illuminated in the frame of the video, and these can then be used to time-lock the behavioral data from the video with fiber photometry data. [A picture of how to wire a Pi up to receive a TTL and illuminate a small LED is here](./images/TTL\_and\_LED_Wiring.png
+
+The script receiveTTL.py allows for triggering recording with a TTL pulse onto a GPIO pin. This script depends on more system variables that are self explanatory: $vidName, $vidLength, $vidFPS. If these variables are not found, defaults will be used, and the defaults can be changed within each script. [A picture of how to wire a Pi up to receive this signal is here](./images/receiveTTL_wiring.png).
+
+
+We also provide a script to use DeepLabCut to analyze videos. We run this script on the remote controller computer where all of our videos are transferred to, and automate this to run every night with [Crontab](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/).
+
+
+
+#### We will be updating this regularly over the next several months (as of April 2023) and this is very much still in development. We will produce more documentation as well as more code, and we appreciate pull requests or suggestions!
 
