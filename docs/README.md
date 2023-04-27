@@ -44,5 +44,5 @@ The main script to capture videos is at scripts/recordVideo.sh. This script assu
 
 In addition to the platform for synchronously controlling many cameras through a DHCP server, we also provide several scripts and wiring diagrams for integrating GPIO pins.
 
-The script receiveTTL.py allows for triggering recording with a TTL pulse onto a GPIO pin. This script depends on more system variables that are self explanatory: $vidName, $vidLength, $vidFPS. If these variables are not found, defaults will be used, and the defaults can be changed within each script. [!A picture of how to wire a Pi up to receive this signal is here](./images/receiveTTL_wiring.png)
+The script receiveTTL.py allows for triggering recording with a TTL pulse onto a GPIO pin. This script depends on more system variables that are self explanatory: $vidName, $vidLength, $vidFPS. If these variables are not found, defaults will be used, and the defaults can be changed within each script. ![A picture of how to wire a Pi up to receive this signal is here](./images/receiveTTL_wiring.png).
 
