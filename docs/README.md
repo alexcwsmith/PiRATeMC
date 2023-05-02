@@ -100,7 +100,8 @@ If you instead wanted to run this weekly, you could use:
 0 0 * * 1 python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py
 ```
 
-If you use Anaconda to manage a virtual environment for DLC, you can instead use the script AnalyzeVideos\_DLC\_Conda.sh. You simply need to edit the line that says
+
+### If you use Anaconda to manage a virtual environment for DLC, you can instead use the script [AnalyzeVideos\_DLC\_Conda.sh](../AnalyzeVideos\_DLC\_conda.sh). You simply need to edit the line that says
 ```
 conda activate dlc
 ```
