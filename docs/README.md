@@ -40,7 +40,7 @@ On the server side, the Ubuntu computer that will serve as the remote controller
 
 Detailed installation instructions can be found in our preprint [here](https://www.biorxiv.org/content/10.1101/2021.07.23.453577v2), and will be updated when a published version is out.
 
-### Scripts
+## Scripts
 -----------
 The main script to capture videos is at scripts/recordVideo.sh. This script assumes that several variables are set in your .bashrc file (or from exporting manually): $REMOTE, $REMOTEPASS, $REMOTEVIDPATH, as these provide the location to transfer video to when done recording. If you only want to record locally and not transfer to a network location, you can use recordVideo_local.sh
 
@@ -56,10 +56,43 @@ The pulseTTLandLED.py script outputs a 0.5s TTL signal and illuminates an LED at
 
 The script receiveTTL.py allows for triggering recording with a TTL pulse onto a GPIO pin. This script depends on more system variables that are self explanatory: $vidName, $vidLength, $vidFPS. If these variables are not found, defaults will be used, and the defaults can be changed within each script. [A picture of how to wire a Pi up to receive this signal is here](./images/receiveTTL_wiring.png).
 
+## Automating data analysis with DLC
+------------------------------------
+We also provide a script to use DeepLabCut to analyze videos (AnalyzeVideos_DLC.py). This script depends on having a pre-trained DLC network, and you must change a few variables in the script to be correct for your system:
 
-We also provide a script to use DeepLabCut to analyze videos. We run this script on the remote controller computer where all of our videos are transferred to, and automate this to run every night with [Crontab](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/).
+1. videoFormat : str, type of video that you want to analyze (most likely '.mp4').
+2. config : str, path to config file for pre-trained DLC network.
+3. videoDirectory : str, path to directory where videos to analyze are (most likely $REMOTEVIDPATH from PiRATeMC).
 
+To use [CRON](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/)to run a script automatically on Linux, enter the following command into a terminal:
 
+```
+crontab -e
+```
+
+This will bring up a window that looks like ![this](./images/crontab_-e.png):
+
+The window has instructions for how to use CRON to automate tasks. In our example the line we have entered is:
+```
+0 0 * * * python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py)
+```
+To break down the components of this line:
+```
+0 0
+```
+corresponds to 'minute, hour', so 0 0 indicates at 12am (midnight)
+
+The next 3 are 'day of month, month, day of week', and inserting:
+```
+* * *
+```
+instructs it to run every day.
+
+The final part is the command to run:
+```
+python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py
+```
+tells it to use python3 to run the script to analyze videos.
 
 #### We will be updating this regularly over the next several months (as of April 2023) and this is very much still in development. We will produce more documentation as well as more code, and we appreciate pull requests or suggestions!
 
