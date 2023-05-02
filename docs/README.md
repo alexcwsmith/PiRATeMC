@@ -72,10 +72,16 @@ crontab -e
 
 This will bring up a window that looks like ![this](./images/crontab_-e.png):
 
-The window has instructions for how to use cron to automate tasks. In our example the line we have entered is:
+The window has instructions for how to use cron to automate tasks, and you can enter the command to execute below. In our example the line we have entered will run the script daily at midnight:
 ```
 0 0 * * * python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py)
 ```
+
+Then you must start the cron service with:
+```
+sudo /etc/init.d/cron start
+```
+
 To break down the components of this line:
 ```
 0 0
