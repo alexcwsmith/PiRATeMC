@@ -64,7 +64,7 @@ We also provide a script to use DeepLabCut to analyze videos (AnalyzeVideos_DLC.
 2. config : str, path to config file for pre-trained DLC network.
 3. videoDirectory : str, path to directory where videos to analyze are (most likely $REMOTEVIDPATH from PiRATeMC).
 
-To use [CRON](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/) to run a script automatically on Linux, enter the following command into a terminal:
+To use [cron](https://www.geeksforgeeks.org/crontab-in-linux-with-examples/) to run a script automatically on Linux, enter the following command into a terminal:
 
 ```
 crontab -e
@@ -72,7 +72,7 @@ crontab -e
 
 This will bring up a window that looks like ![this](./images/crontab_-e.png):
 
-The window has instructions for how to use CRON to automate tasks. In our example the line we have entered is:
+The window has instructions for how to use cron to automate tasks. In our example the line we have entered is:
 ```
 0 0 * * * python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py)
 ```
@@ -100,7 +100,12 @@ If you instead wanted to run this weekly, you could use:
 0 0 * * 1 python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py
 ```
 
+If you use Anaconda to manage a virtual environment for DLC, you can instead use the script AnalyzeVideos\_DLC\_Conda.sh. You simply need to edit the line that says
+```
+conda activate dlc
+```
+by replacing 'dlc' with your environment name.
 
-
+You can find the full manual for the crontab command [here](https://man7.org/linux/man-pages/man5/crontab.5.html).
 #### We will be updating this regularly over the next several months (as of April 2023) and this is very much still in development. We will produce more documentation as well as more code, and we appreciate pull requests or suggestions!
 
