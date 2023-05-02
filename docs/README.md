@@ -58,7 +58,7 @@ The script receiveTTL.py allows for triggering recording with a TTL pulse onto a
 
 ## Automating data analysis with DLC
 ------------------------------------
-We also provide a script to use DeepLabCut to analyze videos [AnalyzeVideos_DLC.py](https://github.com/alexcwsmith/PiRATeMC/blob/master/AnalyzeVideos_DLC.py). Because DLC automatically skips videos that have already been analyzed, it is fine to run a script to analyze videos even if there are no new videos available. This script depends on having a pre-trained DLC network, and you must change a few variables in the script to be correct for your system:
+We also provide a script to use DeepLabCut to analyze videos: [AnalyzeVideos_DLC.py](https://github.com/alexcwsmith/PiRATeMC/blob/master/AnalyzeVideos_DLC.py). Because DLC automatically skips videos that have already been analyzed, it is fine to run a script to analyze videos even if there are no new videos available. This script depends on having a pre-trained DLC network, and you must change a few variables in the script to be correct for your system:
 
 1. videoFormat : str, type of video that you want to analyze (most likely '.mp4').
 2. config : str, path to config file for pre-trained DLC network.
