@@ -105,6 +105,7 @@ If you instead wanted to run this weekly, you could use:
 You can instead use the script [AnalyzeVideos\_DLC\_Conda.sh](https://github.com/alexcwsmith/PiRATeMC/blob/master/AnalyzeVideos_DLC_Conda.sh) after some modification.
 The top block of code, under 'initialize anaconda' has paths that are specific to the user account, so either manually replace all of the paths that start with /home/smith/anaconda3/ to the correct path to your anaconda installation, or you can copy this block of code from  your .bashrc file, as this is automatically added to .bashrc when anaconda is installed.
 
+You then need to modify the line with:
 ```
 conda activate dlc
 ```
