@@ -77,11 +77,6 @@ The window has instructions for how to use cron to automate tasks, and you can e
 0 0 * * * python3 /d1/software/PiRATeMC/AnalyzeVideos_DLC.py)
 ```
 
-Then you must start the cron service with:
-```
-sudo /etc/init.d/cron start
-```
-
 To break down the components of this line:
 ```
 0 0
@@ -114,6 +109,11 @@ You can instead use the script [AnalyzeVideos\_DLC\_Conda.sh](https://github.com
 conda activate dlc
 ```
 by replacing 'dlc' with your environment name.
+
+Finally, you must start the cron service with:
+```
+sudo /etc/init.d/cron start
+```
 
 You can find the full manual for the crontab command [here](https://man7.org/linux/man-pages/man5/crontab.5.html).
 #### We will be updating this regularly over the next several months (as of April 2023) and this is very much still in development. We will produce more documentation as well as more code, and we appreciate pull requests or suggestions!
