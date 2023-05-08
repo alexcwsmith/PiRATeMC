@@ -47,7 +47,7 @@ The main script to capture videos is at scripts/recordVideo.sh. This script assu
 In addition to the platform for synchronously controlling many cameras through a DHCP server, we also provide several scripts and wiring diagrams for integrating GPIO pins. These scripts can be run simultaneously with the recordVideo.sh script in the terminal, for example:
 
 ```
-./recordVideo.sh & pulseTTLandLED.py
+./recordVideo.sh & python3 pulseTTLandLED.py
 ```
 
 Will run both of those scripts, in our hands there is approximately 20-30 millisecond delay between the two actions.
