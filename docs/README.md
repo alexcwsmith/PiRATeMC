@@ -14,6 +14,7 @@ This works by configuring a 'remote controller' computer as a DHCP server to ass
     - **PiCamOS_Standalone** is best for local use cases using only a single Pi at a time.
     - Both operating systems are modified versions of Raspberry Pi OS Buster Lite.
 * Instructional videos can be found in the docs/videos folder, or [on Google Drive here](https://drive.google.com/drive/folders/1h3RB60rbriQN1XQFxuanafKPQfGkNtjc?usp=sharing).
+* The [Official Raspberry Pi Camera Guide](https://magazines-attachments.raspberrypi.org/books/full_pdfs/000/000/036/original/Camera-Guide.pdf?1590756684) may be usedful, particularly for understanding frame rate and resolution capabilities.
 * [Please report any issues to us](https://github.com/alexcwsmith/PiRATeMC/issues).
 
 ### Installation
